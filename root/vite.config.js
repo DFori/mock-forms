@@ -4,6 +4,7 @@ import federation from '@originjs/vite-plugin-federation'
 
 
 export default defineConfig({
+  base: '/root/',
   plugins: [
     react(),
     federation({
