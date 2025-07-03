@@ -2,11 +2,18 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import federation from '@originjs/vite-plugin-federation'
+import path from 'path'
 
 const isProd = process.env.NODE_ENV === 'production'
 
 export default defineConfig({
   base: '/root/',
+  resolve: {
+    alias: {
+      adminApp: path.resolve(__dirname, '../admin/src'),
+      PremiumAdjustmentApp: path.resolve(__dirname, '../premium-adjustment/src'),
+    },
+  },
   plugins: [
     react(),
     federation({
