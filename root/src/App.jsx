@@ -7,8 +7,8 @@ const { Title } = Typography;
 
 // Lazy load the micro frontends
 const AdminInterface = React.lazy(() => import('adminApp/AdminInterface'));
-const WorkflowResults = React.lazy(() => {
-  return import('workflowApp/App').then(mod => {
+const PremiumAdjustmentApp = React.lazy(() => {
+  return import('PremiumAdjustmentApp/App').then(mod => {
     console.log('Loaded workflow module:', mod);
     // Ensure the default export is what you expect
     if (mod && mod.default) {
@@ -93,7 +93,7 @@ const App = () => {
             element={
               <MicroFrontendErrorBoundary appName="Workflow Results">
                 <Suspense fallback={<LoadingSpinner />}>
-                  <WorkflowResults />
+                  <PremiumAdjustmentApp />
                 </Suspense>
               </MicroFrontendErrorBoundary>
             } 
@@ -133,17 +133,17 @@ const LandingPage = () => {
               </Card>
             </Link>
 
-            <Link to="/workflow">
+            <Link to="/premium-adjustments">
               <Card
                 hoverable
                 className="w-64 h-64 flex flex-col items-center justify-center shadow-md hover:shadow-lg transition-all"
               >
                 <div className="text-4xl mb-4">📊</div>
                 <Title level={4} className="text-center">
-                  Workflow Results
+                  Premium Adjustment
                 </Title>
                 <p className="text-gray-600 text-center">
-                  View and manage workflows
+                  View and manage
                 </p>
               </Card>
             </Link>

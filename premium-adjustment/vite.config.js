@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: 'workflowApp',
+      name: 'PremiumAdjustmentApp',
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/App.jsx',
