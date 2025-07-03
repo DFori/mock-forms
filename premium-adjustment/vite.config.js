@@ -35,6 +35,9 @@ export default defineConfig({
     target: 'esnext',
     minify: false,
     cssCodeSplit: false,
+    rollupOptions: {
+      external: ['@ant-design/icons']
+    }
   },
   server: {
     port: 3002,
