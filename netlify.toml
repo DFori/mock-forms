@@ -1,22 +1,18 @@
-# netlify.toml
-
-# ===== Root App =====
 [build]
-  base = "root"
-  command = "cd root && npm install && npm run build && cd ../admin && npm install && npm run build && cd ../premium-adjustment && npm install && npm run build && cd .. && rm -rf deploy && mkdir deploy && cp -r root/build deploy/root && cp -r admin/build deploy/admin && cp -r premium-adjustment/build deploy/premium-adjustment"
+  command = "cd root && npm install && npm run build && cd ../admin && npm install && npm run build && cd ../premium-adjustment && npm install && npm run build && cd .. && rm -rf deploy && mkdir deploy && cp -r root/dist deploy/root && cp -r admin/dist deploy/admin && cp -r premium-adjustment/dist deploy/premium-adjustment"
   publish = "deploy"
-
-# ===== Admin App =====
-[build.environment]
-  NODE_ENV = "production"
 
 [[redirects]]
   from = "/admin/*"
   to = "/admin/index.html"
   status = 200
 
-# ===== Premium App =====
 [[redirects]]
   from = "/premium-adjustment/*"
   to = "/premium-adjustment/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/root/index.html"
   status = 200
