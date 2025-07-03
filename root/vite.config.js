@@ -1,7 +1,9 @@
+// root/vite.config.js
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import federation from '@originjs/vite-plugin-federation'
 
+const isProd = process.env.NODE_ENV === 'production'
 
 export default defineConfig({
   base: '/root/',
@@ -10,24 +12,18 @@ export default defineConfig({
     federation({
       name: 'shell',
       remotes: {
-        adminApp: 'http://localhost:3001/assets/remoteEntry.js',
-        workflowApp: 'http://localhost:3002/assets/remoteEntry.js',
+        adminApp: isProd
+          ? '/admin/assets/remoteEntry.js'
+          : 'http://localhost:3001/assets/remoteEntry.js',
+        workflowApp: isProd
+          ? '/premium-adjustment/assets/remoteEntry.js'
+          : 'http://localhost:3002/assets/remoteEntry.js',
       },
       shared: {
-        react: {
-          singleton: true,
-          requiredVersion: '^18.0.0',
-        },
-        'react-dom': {
-          singleton: true,
-          requiredVersion: '^18.0.0',
-        },
-        'react-router-dom': {
-          singleton: true,
-        },
-        'antd': {
-          singleton: true,
-        },
+        react: { singleton: true, requiredVersion: '^18.0.0' },
+        'react-dom': { singleton: true, requiredVersion: '^18.0.0' },
+        'react-router-dom': { singleton: true },
+        antd: { singleton: true },
       },
     }),
   ],
