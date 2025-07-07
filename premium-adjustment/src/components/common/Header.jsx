@@ -1,6 +1,6 @@
-import React from 'react';
-import { Layout, Dropdown, Button, Avatar, Menu } from 'antd';
-import { UserOutlined, DownOutlined } from '@ant-design/icons';
+import React from "react";
+import { Layout, Dropdown, Button, Avatar, Menu } from "antd";
+import { UserOutlined, DownOutlined } from "@ant-design/icons";
 
 const { Header: AntHeader } = Layout;
 
@@ -20,17 +20,23 @@ const Header = () => {
   );
 
   return (
-    <AntHeader className="!bg-red-700 px-4 flex items-center justify-between">
+    <AntHeader
+      className="px-4 flex items-center justify-between"
+      style={{
+        backgroundColor: "#b91c1c",
+        borderBottom: "none",
+      }}
+    >
       <div className="flex items-center space-x-6">
         <div className="text-white font-bold text-lg">JE</div>
-        <Dropdown overlay={premiumAdjustmentsMenu} trigger={['click']}>
+        <Dropdown overlay={premiumAdjustmentsMenu} trigger={["click"]}>
           <Button type="text" className="text-white border-none">
             PREMIUM ADJUSTMENTS <DownOutlined />
           </Button>
         </Dropdown>
       </div>
-      
-      <Dropdown overlay={userMenu} trigger={['click']}>
+
+      <Dropdown overlay={userMenu} trigger={["click"]}>
         <div className="flex items-center cursor-pointer">
           <Avatar size="small" icon={<UserOutlined />} className="mr-2" />
           <span className="text-white">Test User</span>
