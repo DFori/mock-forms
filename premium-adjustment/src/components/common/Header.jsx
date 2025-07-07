@@ -20,7 +20,7 @@ const Header = () => {
   );
 
   return (
-    <AntHeader className="bg-red-700 px-4 flex items-center justify-between">
+    <AntHeader className="!bg-red-700 px-4 flex items-center justify-between">
       <div className="flex items-center space-x-6">
         <div className="text-white font-bold text-lg">JE</div>
         <Dropdown overlay={premiumAdjustmentsMenu} trigger={['click']}>
